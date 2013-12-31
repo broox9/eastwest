@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EW App</title>
+
+    <!-- libs -->
+    <script type="text/javascript" src="javascripts/lib/json2.js" ></script>
+    <script type="text/javascript" src="javascripts/lib/jquery.js" ></script>
+    <script type="text/javascript" src="javascripts/lib/underscore.js" ></script>
+    <script type="text/javascript" src="javascripts/lib/markup.js" ></script>
+
+    <!-- framework -->
+    <script type="text/javascript" src="javascripts/lib/backbone.js" ></script>
+    <script type="text/javascript" src="javascripts/lib/backbone.localStorage.js" ></script>
+    <script type="text/javascript" src="javascripts/lib/backbone.marionette.js" ></script>
+    <script type="text/javascript" src="javascripts/lib/backbone.babysitter.js" ></script>
+    <script type="text/javascript" src="javascripts/lib/backbone.wreqr.js" ></script>
+
+    <!-- application -->
+    <script type="text/javascript" src="javascripts/app/application.js" ></script>
+
+    <!-- layout module -->
+    <script type="text/javascript" src="javascripts/app/EWstars.controller.js" ></script>
+    <script type="text/javascript" src="javascripts/app/EWstars.layouts.js" ></script>
+
+
+</head>
+<body>
+    <div id="app-container">
+        <div id="app-header"></div>
+        <div id="app-content"></div>
+        <div id="app-footer"></div>
+    </div>
+</body>
+</html>
+
+<!-- header footer templates -->
+<script id="main_nav_template" type="text/html">
+    <a class="player-nav" href="javascript: void(0)">Player</a>
+    <a href="#">Team</a>
+</script>
+
+<script id="footer_template" type="text/html">
+    <p> footer functionality </p>
+</script>
+
+
+
+<!-- main content templates -->
+<script id="content-layout-template" type="text/html">
+    <h6>Player stuff</h6>
+    <section id ="player-form"></section>
+    <section id ="player-results"></section>
+</script>
+
+
+<script id="player_form_template" type="text/html">
+    <select class="position-selector">
+        <option value="random">Random</option>
+    </select>
+</script>
