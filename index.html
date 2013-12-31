@@ -4,6 +4,9 @@
     <title>EW App</title>
 
     <!-- libs -->
+    <link type="text/css" rel="stylesheet" href="css/application.css" />
+
+    <!-- Mad Styles -->
     <script type="text/javascript" src="javascripts/lib/json2.js" ></script>
     <script type="text/javascript" src="javascripts/lib/jquery.js" ></script>
     <script type="text/javascript" src="javascripts/lib/underscore.js" ></script>
@@ -19,25 +22,33 @@
     <!-- application -->
     <script type="text/javascript" src="javascripts/app/application.js" ></script>
 
+
+    <!-- Player module -->
+    <script type="text/javascript" src="javascripts/app/player/player.js" ></script>
+    <script type="text/javascript" src="javascripts/app/player/player.views.js" ></script>
+    <script type="text/javascript" src="javascripts/app/player/player.control.js" ></script>
+
+
     <!-- layout module -->
-    <script type="text/javascript" src="javascripts/app/EWstars.controller.js" ></script>
+    <script type="text/javascript" src="javascripts/app/EWstars.control.js" ></script>
     <script type="text/javascript" src="javascripts/app/EWstars.layouts.js" ></script>
 
 
 </head>
 <body>
     <div id="app-container">
-        <div id="app-header"></div>
+        <header id="app-header"></header>
         <div id="app-content"></div>
-        <div id="app-footer"></div>
+        <footer id="app-footer"></footer>
     </div>
 </body>
 </html>
 
 <!-- header footer templates -->
 <script id="main_nav_template" type="text/html">
-    <a class="player-nav" href="javascript: void(0)">Player</a>
-    <a href="#">Team</a>
+    <a href="">Home</a>
+    <a class="player-nav" href="#/player">Player</a>
+    <a href="#/team">Team</a>
 </script>
 
 <script id="footer_template" type="text/html">
@@ -47,15 +58,32 @@
 
 
 <!-- main content templates -->
-<script id="content-layout-template" type="text/html">
+<script id="content_layout_template" type="text/html">
     <h6>Player stuff</h6>
-    <section id ="player-form"></section>
-    <section id ="player-results"></section>
+    <article id ="player-section"></article>
+    <article id ="team-section"></article>
+    <aside id ="saved-section"></aside>
 </script>
 
 
 <script id="player_form_template" type="text/html">
-    <select class="position-selector">
-        <option value="random">Random</option>
-    </select>
+    <form>
+        <fieldset>
+            <input type="checkbox" name="is_nickname" id="is_nickname" />
+            <label for="is_nickname">Nickname?</label>
+            <input type="checkbox" name="is_BYU" id="is_BYU" />
+            <label for="is_BYU">BYU or Morehouse?</label>
+        </fieldset>
+        <select class="position-selector">
+            <option value="random">Random</option>
+        </select>
+
+        <span>Go</span>
+    </form>
+
+</script>
+
+
+<script id="player_results_template" type="text/html">
+    <h6> no results</h6>
 </script>

@@ -1,33 +1,38 @@
+'use strict';
+
 /* App setup and init */
 var EWstars = function () {
 
   var App = new Backbone.Marionette.Application();
 
+    /* regions */
+    App.addRegions({
+        headerRegion: '#app-header',
+        contentRegion: '#app-content',
+        footerRegion: '#app-footer'
+    });
 
+    _.extend(App, {
+        views: {},
+        models: {}
+    });
+
+
+  /* PRE init */
   App.on('initialize:before', function () {
-    Backbone.history.start();
+      console.log("History Started");
+      Backbone.history.start();
+      App.AppControl.start();
   });
 
 
+  /* init */
+
+
+  /* POST init */
   App.on('initialize:after', function () {
-    console.log("App Intialized");
-
-    var layout = App.Layout,
-        header = new layout.Header(),
-        footer = new layout.Footer(),
-        content = new layout.Content();
-
-    App.headerRegion.show(header);
-    App.footerRegion.show(footer);
-    App.contentRegion.show(content);
-  });
-
-
-  /* regions */
-  App.addRegions({
-    headerRegion: '#app-header',
-    contentRegion: '#app-content',
-    footerRegion: '#app-footer'
+    App.vent.trigger('show:initialview');
+    App.Player.start();
   });
 
   return App;

@@ -3,6 +3,8 @@ EWstars.Layout = EWstars.module('Layout', function (Layout, App, Backbone, Mario
   /* Layout Header View */
   Layout.Header = Marionette.ItemView.extend({
     template: '#main_nav_template',
+    tagName: 'nav',
+    className: 'main-nav',
 
     ui: {},
     modelEvents: {},
@@ -26,17 +28,21 @@ EWstars.Layout = EWstars.module('Layout', function (Layout, App, Backbone, Mario
   });
 
   Layout.Content = Marionette.Layout.extend({
-    template: '#content-layout-template',
+    template: '#content_layout_template',
 
-    regions: {},
+    regions: {
+        playerSection: '#player-section',
+        teamSection: '#team-section'
+    },
 
     ui: {},
     modelEvents: {},
     collectionEvents: {},
     events: {},
 
-    initialize: function () {
-      console.log("Layout Module Content Section Init'd")
+    initialize: function (options) {
+      console.log("Layout Module Content Section Init'd", options, this);
+      this.render();
     }
 
   });
