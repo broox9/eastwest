@@ -19,6 +19,9 @@
     <script type="text/javascript" src="javascripts/lib/backbone.babysitter.js" ></script>
     <script type="text/javascript" src="javascripts/lib/backbone.wreqr.js" ></script>
 
+    <script type="text/javascript" src="javascripts/app/existingprofiles.js" ></script>
+    <script type="text/javascript" src="javascripts/app/positions.js" ></script>
+
     <!-- application -->
     <script type="text/javascript" src="javascripts/app/application.js" ></script>
 
@@ -59,7 +62,6 @@
 
 <!-- main content templates -->
 <script id="content_layout_template" type="text/html">
-    <h6>Player stuff</h6>
     <article id ="player-section"></article>
     <article id ="team-section"></article>
     <aside id ="saved-section"></aside>
@@ -67,23 +69,32 @@
 
 
 <script id="player_form_template" type="text/html">
-    <form>
+    <form id="player-form" name="player-form">
         <fieldset>
             <input type="checkbox" name="is_nickname" id="is_nickname" />
             <label for="is_nickname">Nickname?</label>
-            <input type="checkbox" name="is_BYU" id="is_BYU" />
-            <label for="is_BYU">BYU or Morehouse?</label>
+            <!-- input type="checkbox" name="is_BYU" id="is_BYU" />
+            <label for="is_BYU">BYU or Morehouse?</label -->
         </fieldset>
         <select class="position-selector">
             <option value="random">Random</option>
         </select>
 
-        <span>Go</span>
+        <span id="submit-player-form">Go</span>
     </form>
 
 </script>
 
 
 <script id="player_results_template" type="text/html">
-    <h6> no results</h6>
+    <% if(!name) { %>
+        <h6> no data</h6>
+    <% } else { %>
+        <ul>
+            <li><%= name %></li>
+            <li><%= college %></li>
+            <li><%= position.name %> #<%= number %></li>
+        </ul>
+    <% }%>
+
 </script>

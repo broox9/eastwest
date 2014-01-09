@@ -4,7 +4,7 @@ EWstars.Layout = EWstars.module('Layout', function (Layout, App, Backbone, Mario
   Layout.Header = Marionette.ItemView.extend({
     template: '#main_nav_template',
     tagName: 'nav',
-    className: 'main-nav',
+    className: 'header-nav',
 
     ui: {},
     modelEvents: {},
@@ -41,7 +41,7 @@ EWstars.Layout = EWstars.module('Layout', function (Layout, App, Backbone, Mario
     events: {},
 
     initialize: function (options) {
-      console.log("Layout Module Content Section Init'd", options, this);
+      console.log("Layout Module Content Section Init'd", options);
       this.render();
     }
 

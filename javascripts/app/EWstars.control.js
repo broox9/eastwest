@@ -10,10 +10,10 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
     /* private */
     var router = Marionette.AppRouter.extend({
        appRoutes: {
-        'player' : 'viewPlayer',
-        'team' : 'viewTeam',
-        '' : 'initializeView',
-        '#' : 'initializeView'
+        'player'        : 'viewPlayer',
+        'team'          : 'viewTeam',
+        ''              : 'initializeView',
+        '#'             : 'initializeView'
        }
     });
 
@@ -26,15 +26,15 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
         initializeView: function () {
             console.log('initial view fired');
             var layout = App.Layout,
-                header = new layout.Header(this.defaults),
-                footer = new layout.Footer(this.defaults),
-                content = new layout.Content(this.defaults);
+                header = new layout.Header(),
+                footer = new layout.Footer(),
+                content = new layout.Content();
 
             /* make the content section which is a layout accessible */
             App.Content = content;
 
 
-            App.headerRegion.show(header);
+            //App.headerRegion.show(header);
             App.footerRegion.show(footer);
             App.contentRegion.show(content);
         },

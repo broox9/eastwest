@@ -14,7 +14,8 @@ var EWstars = function () {
 
     _.extend(App, {
         views: {},
-        models: {}
+        models: {},
+        collections: {}
     });
 
 
