@@ -53,7 +53,7 @@
 <body>
     <div id="app-container">
         <header id="app-header"></header>
-        <div id="app-content"></div>
+        <section id="app-content"></section>
         <footer id="app-footer"></footer>
     </div>
 </body>
@@ -62,14 +62,14 @@
 <!-- header footer templates -->
 <script id="main_nav_template" type="text/html">
     <a href="#">Home</a>
-    <a href="#/player">Player</a>
-    <a href="#/team">Team</a>
+    <a href="#player">Player</a>
+    <a href="#team">Team</a>
 </script>
 
 
 <script id="initial_nav_template" type="text/html">
-    <a href="#/player">Player</a>
-    <a href="#/team">Team</a>
+    <a href="#player">Player</a>
+    <a href="#team">Team</a>
 </script>
 
 <script id="footer_template" type="text/html">
@@ -84,10 +84,12 @@
 
 <!-- main content templates -->
 <script id="content_layout_template" type="text/html">
-    <article id ="player-section"></article>
-    <article id ="team-section"></article>
+    <nav id="nav-section"></nav>
+    <article id ="form-section"></article>
+    <article id ="results-section"></article>
     <aside id ="saved-section"></aside>
 </script>
+
 
 
 <script id="player_form_template" type="text/html">
