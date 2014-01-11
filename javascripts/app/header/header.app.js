@@ -1,12 +1,11 @@
 EWstars.Header = EWstars.module("Header", function (Header, App, Backbone, Marionette, $, _) {
-    this.startWithParent = false;
+    //this.startWithParent = false;
 
 
    /* VIEW */
     Header.NavView = Marionette.ItemView.extend({
-        template: '#main_nav_template',
-        tagName: 'nav',
-        className: 'header-nav',
+        template: '#header_template',
+        className: 'header',
 
         initialize: function () {
             console.log("new NavView init'd")
