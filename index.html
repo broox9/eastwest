@@ -5,6 +5,7 @@
     <!-- META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1, user-scalable = no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 
     <!-- libs -->
@@ -61,12 +62,18 @@
 <!-- header footer templates -->
 <script id="main_nav_template" type="text/html">
     <a href="#">Home</a>
-    <a class="player-nav" href="#/player">Player</a>
+    <a href="#/player">Player</a>
+    <a href="#/team">Team</a>
+</script>
+
+
+<script id="initial_nav_template" type="text/html">
+    <a href="#/player">Player</a>
     <a href="#/team">Team</a>
 </script>
 
 <script id="footer_template" type="text/html">
-    <p><i class="fa fa-lg fa-save"></i> footer functionality </p>
+        <a href="#"><i class="fa fa-lg fa-home"></i> home</a>
 </script>
 
 <script id="header_template" type="text/html">

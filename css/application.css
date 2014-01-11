@@ -37,17 +37,9 @@ header {
 }
 
 footer {
-    color: #777;
-    margin: 0;
-    text-align: center;
-    line-height: 30px;
-    height: 31px;
-    padding: 7px 10px;
-    background-color: #eee;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    /**/
 }
+
 
 section {
     border: 1px solid blue;
@@ -108,6 +100,23 @@ i.fa {
 
 .initial-nav a:active {
 
+}
+
+
+
+/* footer */
+.footer {
+    display: none;
+    color: #777;
+    margin: 0;
+    text-align: center;
+    line-height: 30px;
+    height: 31px;
+    padding: 7px 10px;
+    background-color: #eee;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 
