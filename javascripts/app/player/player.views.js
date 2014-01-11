@@ -42,7 +42,6 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
     });
 
 
-
     /* listen for start Started */
     Player.on('start', function (options) {
         console.log("player module started");

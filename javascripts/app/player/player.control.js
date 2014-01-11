@@ -4,30 +4,35 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
 
     Player.Router = Marionette.AppRouter.extend({
         appRoutes: {
-            'player/:id' : 'showPlayer',
-            'player/new' : 'createPlayer'
+            'player/:id' : 'showPlayer'
         }
     });
 
     Player.Controller = {
         showPlayer: function (data) {
-            console.log("SHOWING PLAYER", data);
             var player = new App.models.Player();
             var results = new Player.Results({model: player});
-            App.Content.playerSection.show(results);
+            console.log("SHOWING PLAYER", data, results);
 
         },
 
-        createPlayer: function (e, data) {
+        createPlayer: function (data) {
             console.log('creating a player', data)
+        },
+
+        newPlayer: function () {
+
         }
     };
 
 
-    /* App Events */
-    App.vent.on('player:create', function (e) {
-        Player.Controller.createPlayer(e);
+    /* App Events - candidate for command execute  */
+    App.vent.on('player:new', function (e) {
+        Player.Controller.newPlayer();
+        App.Footer.start();
     })
+
+
 
     /* start events */
     Player.on('start', function (options) {
@@ -35,7 +40,5 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
         new Player.Router({
             controller: Player.Controller
         });
-        //Player.Controller.showPlayer();
-
     });
 });

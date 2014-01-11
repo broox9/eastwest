@@ -1,5 +1,7 @@
 EWstars.Footer = EWstars.module("Footer", function (Footer, App, Backbone, Marionette, $, _) {
     this.startWithParent = false;
+    this.started = false;
+    this.currentView;
 
     /* VIEW */
     Footer.View = Marionette.ItemView.extend({
@@ -7,7 +9,7 @@ EWstars.Footer = EWstars.module("Footer", function (Footer, App, Backbone, Mario
         className: 'footer',
 
         initialize: function () {
-            console.log("new footer init'd")
+            //
         }
     });
 
@@ -20,22 +22,35 @@ EWstars.Footer = EWstars.module("Footer", function (Footer, App, Backbone, Mario
 
     _.extend(Footer.Controller.prototype, {
 
-        start: function (options) {
-            console.log("footer app controller init'd", options);
-            this.showFooter();
+        startFooter: function() {
+            Footer.currentView =  new Footer.View;
+            App.footerRegion.show(Footer.currentView)
         },
 
-        showFooter: function() {
-            App.footerRegion.show(new Footer.View)
+        showFooter: function () {
+            var el = Footer.currentView.$el
+            el.fadeIn('fast');
         }
     });
 
 
-    /* APP(Footer) START */
-    Footer.on('start', function (options) {
-        console.log("footer app start");
-        var controller = new Footer.Controller(options)
-        controller.start();
+    /* Event Listeners */
+    App.vent.on("footer:show", function () {
+        Footer.currentView.$el.fadeIn('fast');
+
     });
 
+    App.vent.on("footer:hide", function () {
+        Footer.currentView.$el.fadeOut('fast');
+
+    });
+
+
+    /* APP(Footer) START */
+    Footer.addInitializer(function (options) {
+        this.controller = new this.Controller(options)
+        this.controller.startFooter();
+        this.started = true;
+        console.log("footer module", this)
+    });
 });

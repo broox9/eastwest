@@ -8,7 +8,7 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
     */
 
     /* private */
-    var router = Marionette.AppRouter.extend({
+    var _router = Marionette.AppRouter.extend({
        appRoutes: {
         'player'        : 'viewPlayer',
         'team'          : 'viewTeam',
@@ -17,50 +17,47 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
        },
 
        initialize: function () {
-        console.log("Router Started");
+        console.log("app router Started");
        }
     });
 
     /* private */
-    var controller = {
+    var _controller = {
         defaults: {
             init: true
         },
 
         initializeView: function () {
             console.log('initial view fired');
-            //App.Header.start();
-            App.Footer.start();
-            console.log("AppControl", AppControl);
+            App.Header.start();
+            this.startOrHideFooter();
             AppControl.InitView.start();
-//            var layout = App.Layout,
-//                header = new layout.Header(),
-//                footer = new layout.Footer(),
-//                content = new layout.Content();
-//
-//            /* make the content section which is a layout accessible */
-//            App.Content = content;
-//
-//
-//            //App.headerRegion.show(header);
-//            App.footerRegion.show(footer);
-//            App.contentRegion.show(content);
         },
 
         viewPlayer: function () {
             console.log('view player fired');
-            App.vent.trigger("show:player");
+            App.vent.trigger("player:new");
+            App.vent.trigger("footer:show");
         },
 
         viewTeam: function () {
-            App.vent.trigger("show:team");
+            App.vent.trigger("team:new");
+            App.vent.trigger("footer:show");
+        },
+
+        startOrHideFooter: function () {
+            if (App.Footer.started) {
+              App.vent.trigger("footer:hide");
+              return;
+            }
+            App.Footer.start();
         }
     };
 
 
     /* initialize when needed */
     App.vent.on('show:initialview', function(){
-        controller.initializeView();
+        _controller.initializeView();
     });
 
 
@@ -68,11 +65,10 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
     * so no AppControl.addInitializer
     * */
     AppControl.on('start', function (options) {
-        //var controller = this.controller
-        new router({
-            controller: controller
+        this.router = new _router({
+            controller: _controller
         });
-        console.log("app controller started");
+        console.log("app control started");
     });
 
 });

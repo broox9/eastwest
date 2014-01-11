@@ -8,7 +8,7 @@ EWstars.Header = EWstars.module("Header", function (Header, App, Backbone, Mario
         className: 'header',
 
         initialize: function () {
-            console.log("new NavView init'd")
+            //
         }
     });
 
@@ -22,7 +22,6 @@ EWstars.Header = EWstars.module("Header", function (Header, App, Backbone, Mario
     _.extend(Header.Controller.prototype, {
 
         start: function (options) {
-            console.log("header app controller init'd", options);
             this.showNav();
         },
 
@@ -33,8 +32,7 @@ EWstars.Header = EWstars.module("Header", function (Header, App, Backbone, Mario
 
 
     /* APP(HEADER) START */
-    Header.on('start', function (options) {
-        console.log("header app start");
+    Header.addInitializer(function (options) {
         var controller = new Header.Controller(options)
         controller.start();
     });
