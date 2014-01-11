@@ -28,12 +28,15 @@ var EWstars = function () {
 
 
   /* init */
+App.on('initialize', function () {
+    App.AppControl.start();
+});
 
 
   /* POST init */
   App.on('initialize:after', function () {
-    App.vent.trigger('show:initialview');
     App.Player.start();
+    App.vent.trigger('show:initialview');
   });
 
   return App;

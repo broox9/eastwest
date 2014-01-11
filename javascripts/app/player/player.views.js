@@ -1,15 +1,5 @@
 EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Marionette, $, _) {
 
-//    Player.Layout = Marionette.Layout.extend({
-//        template: '#',
-//
-//        regions: {
-//            playerForm: '#player-form',
-//            playerResult: '#player-results'
-//        }
-//    });
-
-
     Player.Form = Marionette.ItemView.extend({
         template: '#player_form_template',
 
@@ -43,7 +33,7 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
 
 
     /* listen for start Started */
-    Player.on('start', function (options) {
-        console.log("player module started");
-    });
+//    Player.addInitializer('start', function (options) {
+//
+//    });
 });

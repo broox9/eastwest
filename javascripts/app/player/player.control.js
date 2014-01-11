@@ -21,7 +21,8 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
         },
 
         newPlayer: function () {
-
+            var form = new Player.Form()
+            App.AppControl.Layout.formRegion.show(form);
         }
     };
 
@@ -29,14 +30,12 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
     /* App Events - candidate for command execute  */
     App.vent.on('player:new', function (e) {
         Player.Controller.newPlayer();
-        App.Footer.start();
     })
 
 
 
     /* start events */
-    Player.on('start', function (options) {
-        console.log("creating player controller ");
+    Player.on('start',function (options) {
         new Player.Router({
             controller: Player.Controller
         });

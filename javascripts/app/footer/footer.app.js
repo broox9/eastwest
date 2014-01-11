@@ -2,6 +2,7 @@ EWstars.Footer = EWstars.module("Footer", function (Footer, App, Backbone, Mario
     this.startWithParent = false;
     this.started = false;
     this.currentView;
+    this.contextScope = null;
 
     /* VIEW */
     Footer.View = Marionette.ItemView.extend({
@@ -28,21 +29,35 @@ EWstars.Footer = EWstars.module("Footer", function (Footer, App, Backbone, Mario
         },
 
         showFooter: function () {
-            var el = Footer.currentView.$el
-            el.fadeIn('fast');
+            var el= Footer.currentView.$el;
+            if (el.not(':visible')) {
+                Footer.currentView.$el.fadeIn('fast');
+            }
+        },
+
+        hideFooter: function () {
+            var el= Footer.currentView.$el;
+            if (el.is(':visible')) {
+                Footer.currentView.$el.fadeOut('fast');
+            }
+        },
+
+        setContext: function (context) {
+            //"team" , "player" , or null
+            Footer.contextScope = context;
+            return this;
         }
     });
 
 
     /* Event Listeners */
-    App.vent.on("footer:show", function () {
-        Footer.currentView.$el.fadeIn('fast');
-
-    });
-
-    App.vent.on("footer:hide", function () {
-        Footer.currentView.$el.fadeOut('fast');
-
+    App.vent.on({
+        "footer:show": function (context) {
+            Footer.controller.setContext(context).showFooter();
+        },
+        "footer:hide": function() {
+            Footer.controller.setContext(null).hideFooter();
+        }
     });
 
 
@@ -51,6 +66,5 @@ EWstars.Footer = EWstars.module("Footer", function (Footer, App, Backbone, Mario
         this.controller = new this.Controller(options)
         this.controller.startFooter();
         this.started = true;
-        console.log("footer module", this)
     });
 });

@@ -1,6 +1,6 @@
 EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Backbone, Marionette, $, _) {
 
-    //this.startWithParent = false;
+    this.startWithParent = false;
 
     /*
     *   I privatized the router and controller pretty much
@@ -17,7 +17,7 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
        },
 
        initialize: function () {
-        console.log("app router Started");
+        console.log("app router started");
        }
     });
 
@@ -28,21 +28,25 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
         },
 
         initializeView: function () {
-            console.log('initial view fired');
             App.Header.start();
             this.startOrHideFooter();
-            AppControl.InitView.start();
+
+            console.log('showing init view');
+            var layout = new AppControl.Layout();
+
+            App.contentRegion.show(layout);
+            layout.navRegion.show(new AppControl.InitNav)
         },
 
         viewPlayer: function () {
             console.log('view player fired');
             App.vent.trigger("player:new");
-            App.vent.trigger("footer:show");
+            App.vent.trigger("footer:show", "player");
         },
 
         viewTeam: function () {
             App.vent.trigger("team:new");
-            App.vent.trigger("footer:show");
+            App.vent.trigger("footer:show", "team");
         },
 
         startOrHideFooter: function () {
@@ -61,10 +65,8 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
     });
 
 
-    /* get it started - this module is started manually
-    * so no AppControl.addInitializer
-    * */
-    AppControl.on('start', function (options) {
+    /* get it started - this module is started manually */
+    AppControl.addInitializer(function (options) {
         this.router = new _router({
             controller: _controller
         });

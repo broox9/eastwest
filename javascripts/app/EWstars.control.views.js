@@ -1,22 +1,29 @@
-EWstars.AppControl.InitView = EWstars.module('AppControl.InitView', function (InitView, App, Backbone, Marionette, $, _ ) {
+EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Backbone, Marionette, $, _ ) {
 
-    this.startWithParent = false;
+    //this.startWithParent = false;
+    this.contextScope = null;
 
     /* Initial View */
-    InitView.Nav = Marionette.ItemView.extend({
-      template: "#initial_nav_template",
+    AppControl.InitNav = Marionette.ItemView.extend({
+      template: '#initial_nav_template',
       tagName: 'section',
-      className: "initial-nav",
-
-      initialize: function () {
-          //
-      }
+      className: 'initial-nav'
     });
 
-    InitView.on('start', function () {
-        console.log("showing init view");
-        App.contentRegion.show(new InitView.Nav);
-    });
 
+    /* Common Content Layout - player and team share */
+    AppControl.Layout = Marionette.Layout.extend({
+        template: '#content_layout_template',
+        tagName: 'form',
+        regions: {
+            navRegion: '#nav-section',
+            formRegion: '#form-section',
+            resultsRegion: '#results-section'
+        },
+
+        initialize: function () {
+            console.log("content layout started")
+        }
+    })
 
 });
