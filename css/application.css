@@ -19,13 +19,17 @@ green: #3FD96F;
 html, body {
     background-color: #fff;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: relative;
     font-size: 10pt;
     font-family: "DINAlternate-Bold","Avenir-Book", "Palatino Linotype", "Palatino", sans-serif;
 }
 
 header {
+    height: 44px;
+}
+
+.header {
     color: #fff;
     margin: 0;
     font-weight: bold;
@@ -33,24 +37,42 @@ header {
     line-height: 30px;
     height: 31px;
     padding: 7px 10px;
+
+
     background-color: #007EF9;
 }
 
+/* footer */
 footer {
     /**/
 }
 
 
+.footer {
+    display: none;
+    color: #777;
+    text-align: center;
+    line-height: 30px;
+    height: 31px;
+    padding: 7px 10px;
+    background-color: #eee;
+    width: 80vw;
+    position: absolute;
+    left: 8vw;
+    bottom: 0;
+}
+
+
 nav {
-    border: 1px solid magenta;
+    /*border: 1px solid magenta;*/
 }
 
 section {
-    border: 1px solid blue;
+    /*border: 1px solid blue;*/
 }
 
 article {
-    border: 1px solid green;
+    /*border: 1px solid green;*/
 }
 
 a {
@@ -81,6 +103,11 @@ i.fa {
 /* ---- end font awesome -- */
 
 
+#app-container {
+    /*height: 100vh;*/
+    /*width: 100%;*/
+}
+
 /* Header */
 .header h1 {
     font-weight: bold;
@@ -102,25 +129,24 @@ i.fa {
     border-radius: 3px;
 }
 
-.initial-nav a:active {
-
-}
 
 
-
-/* footer */
-.footer {
-    display: none;
-    color: #777;
-    margin: 0;
+/* PLayer */
+.player-info {
     text-align: center;
-    line-height: 30px;
-    height: 31px;
-    padding: 7px 10px;
-    background-color: #eee;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    line-height: 2.2rem;
 }
+.player-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-size-adjust: 90%;
+}
+.player-number {
+    font-size: 1.4rem;
+}
+.player-college {
+    color: #444;
+}
+.player-position {}
 
 
