@@ -94,31 +94,46 @@
 
 <script id="player_form_template" type="text/html">
     <form id="player-form" name="player-form">
-        <fieldset>
-            <input type="checkbox" name="is_nickname" id="is_nickname" />
+        <!-- fieldset>
+            <!-- input type="checkbox" name="is_nickname" id="is_nickname" />
             <label for="is_nickname">Nickname?</label>
-            <!-- input type="checkbox" name="is_BYU" id="is_BYU" />
-            <label for="is_BYU">BYU or Morehouse?</label -->
-        </fieldset>
-        <select class="position-selector">
-            <option value="random">Random</option>
-        </select>
+            <input type="checkbox" name="is_BYU" id="is_BYU" />
+            <label for="is_BYU">BYU or Morehouse?</label>
+        </fieldset -->
+        <fieldset>
+            <select class="team-selector">
+                <option value="random">Select A Team</option>
+                <option value="east">East</option>
+                <option value="west">West</option>
+            </select>
 
-        <span id="submit-player-form">Go</span>
+            <select class="position-selector">
+                <option value="random">Random</option>
+            </select>
+        </fieldset>
+
+
+        <button id="submit-player-form">Go</button>
     </form>
 
 </script>
 
 
-<script id="player_results_template" type="text/html">
-    <% if(!name) { %>
-        <h6> no data</h6>
-    <% } else { %>
-        <ul>
-            <li><%= name %></li>
-            <li><%= college %></li>
-            <li><%= position.name %> #<%= number %></li>
-        </ul>
-    <% }%>
+<script id="results_empty_template" type="text/html">
+    <h6> press "go"</h6>
+</script>
 
+<script id="player_results_template" type="text/html">
+    <ul class="player-info">
+        <li>
+            <span class="player-name"><%= name %></span>
+        </li>
+        <li>
+            <span class="player-number">#<%= number %></span>,
+            <span class="player-position"><%= position.name %></span>
+        </li>
+        <li>
+            <span class="player-college"><%= college %></span>
+        </li>
+    </ul>
 </script>

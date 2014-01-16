@@ -9,24 +9,23 @@ EWstars.AppControl = EWstars.module('AppControl', function (AppControl, App, Bac
 
     /* private */
     var _router = Marionette.AppRouter.extend({
-       appRoutes: {
+      appRoutes: {
         'player'        : 'viewPlayer',
         'team'          : 'viewTeam',
         ''              : 'initializeView',
         '#'             : 'initializeView'
-       },
+      },
 
-       initialize: function () {
-        console.log("app router started");
-       }
+      initialize: function () {
+        console.log("app router started", location.hash);
+        if (location.hash.length) {
+        this.navigate(location.hash, {trigger: true});
+        }
+      }
     });
 
     /* private */
     var _controller = {
-        defaults: {
-            init: true
-        },
-
         initializeView: function () {
             App.Header.start();
             this.startOrHideFooter();

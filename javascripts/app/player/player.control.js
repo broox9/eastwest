@@ -9,10 +9,12 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
     });
 
     Player.Controller = {
-        showPlayer: function (data) {
-            var player = new App.models.Player();
+        showPlayer: function (model) {
+            var player = model || new App.models.Player();
             var results = new Player.Results({model: player});
-            console.log("SHOWING PLAYER", data, results);
+
+            this.layout.resultsRegion.show(results);
+
 
         },
 
@@ -21,16 +23,28 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
         },
 
         newPlayer: function () {
-            var form = new Player.Form()
-            App.AppControl.Layout.formRegion.show(form);
+          var form = new Player.Form(),
+              nav = new Player.Nav(),
+              results = new Player.EmptyResults();
+          this.layout = new App.AppControl.Layout();
+
+          App.contentRegion.show(this.layout);
+          this.layout.resultsRegion.show(results);
+          this.layout.navRegion.show(nav);
+          this.layout.formRegion.show(form);
         }
     };
 
 
     /* App Events - candidate for command execute  */
-    App.vent.on('player:new', function (e) {
+    App.vent.on({
+      'player:new': function (e) {
         Player.Controller.newPlayer();
-    })
+      },
+      'player:form:submit': function (model) {
+        Player.Controller.showPlayer(model);
+      }
+    });
 
 
 

@@ -29,7 +29,7 @@ var EWstars = function () {
 
   /* init */
 App.on('initialize', function () {
-    App.AppControl.start();
+    //App.AppControl.start();
 });
 
 

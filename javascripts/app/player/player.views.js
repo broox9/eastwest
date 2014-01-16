@@ -13,13 +13,18 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
 
         triggerPlayerCreate: function (e) {
             e.preventDefault();
-            //console.log("triggered Player Create", e)
-            //App.vent.trigger("player:create", form);
+            App.vent.trigger("player:form:submit");
         }
     });
 
 
+    Player.EmptyResults = Marionette.ItemView.extend({
+      template: '#results_empty_template'
+    });
+
+
     Player.Results = Marionette.ItemView.extend({
+        model: App.models.Player,
         template: '#player_results_template',
 
         initialize: function (options) {
@@ -30,6 +35,10 @@ EWstars.Player = EWstars.module("Player", function (Player, App, Backbone, Mario
             console.log("result view render ", options)
         }
     });
+
+  Player.Nav = Marionette.ItemView.extend({
+    template: '#main_nav_template'
+  });
 
 
     /* listen for start Started */
